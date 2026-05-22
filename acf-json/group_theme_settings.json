@@ -1,0 +1,160 @@
+{
+    "key": "group_theme_settings",
+    "title": "Theme Settings",
+    "fields": [
+        {
+            "key": "field_tab_header",
+            "label": "Header",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_header_logo",
+            "label": "Logo",
+            "name": "header_logo",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_header_hotline",
+            "label": "Hotline",
+            "name": "header_hotline",
+            "type": "text"
+        },
+        {
+            "key": "field_header_advise",
+            "label": "Tổng đài tư vấn",
+            "name": "header_advise",
+            "type": "text"
+        },
+        {
+            "key": "field_header_emergency",
+            "label": "Cấp cứu",
+            "name": "header_emergency",
+            "type": "text"
+        },
+        {
+            "key": "field_tab_footer",
+            "label": "Footer",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_footer_logo",
+            "label": "Logo Footer",
+            "name": "footer_logo",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_footer_address",
+            "label": "Địa chỉ",
+            "name": "footer_address",
+            "type": "wysiwyg",
+			"toolbar": "basic"
+        },
+        {
+            "key": "field_footer_working_hours",
+            "label": "Giờ làm việc",
+            "name": "footer_working_hours",
+            "type": "repeater",
+            "sub_fields": [
+                {
+                    "key": "field_working_days",
+                    "label": "Ngày",
+                    "name": "days",
+                    "type": "text"
+                },
+                {
+                    "key": "field_working_time",
+                    "label": "Giờ",
+                    "name": "time",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "key": "field_footer_app_qr",
+            "label": "QR App",
+            "name": "footer_app_qr",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_footer_app_text",
+            "label": "Nội dung tải App",
+            "name": "footer_app_text",
+            "type": "wysiwyg"
+        },
+        {
+            "key": "field_footer_copyright",
+            "label": "Copyright",
+            "name": "footer_copyright",
+            "type": "text"
+        },
+        {
+            "key": "field_footer_socials",
+            "label": "Mạng xã hội",
+            "name": "footer_socials",
+            "type": "repeater",
+            "sub_fields": [
+                {
+                    "key": "field_social_icon",
+                    "label": "Icon",
+                    "name": "icon",
+                    "type": "image",
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_social_link",
+                    "label": "Link",
+                    "name": "link",
+                    "type": "url"
+                }
+            ]
+        },
+        {
+            "key": "field_tab_fix_toc",
+            "label": "Fix TOC CTA",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_fix_cta_buttons",
+            "label": "Các nút CTA",
+            "name": "fix_cta_buttons",
+            "type": "repeater",
+            "sub_fields": [
+                {
+                    "key": "field_cta_icon",
+                    "label": "Icon (Material)",
+                    "name": "icon",
+                    "type": "text"
+                },
+                {
+                    "key": "field_cta_text",
+                    "label": "Text hiển thị",
+                    "name": "text",
+                    "type": "text"
+                },
+                {
+                    "key": "field_cta_link",
+                    "label": "Link",
+                    "name": "link",
+                    "type": "url"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-settings"
+            }
+        ]
+    ],
+    "style": "default",
+    "active": true
+}

@@ -1,0 +1,71 @@
+{
+    "key": "group_template_home",
+    "title": "Trang chủ",
+    "fields": [
+        { "key": "field_tab_pagebanner", "label": "Banner", "name": "", "type": "tab", "placement": "top" },
+        { "key": "field_show_section_pagebanner", "label": "Hiển thị Banner", "name": "show_section_pagebanner", "type": "true_false", "default_value": 1, "ui": 1 },
+        { "key": "field_home_banner_sliders", "label": "Sliders", "name": "home_banner_sliders", "type": "repeater", "sub_fields": [ { "key": "field_banner_image", "label": "Hình ảnh", "name": "image", "type": "image", "return_format": "array" } ] },
+        { "key": "field_home_banner_quick_links", "label": "Nút truy cập nhanh", "name": "home_banner_quick_links", "type": "repeater", "sub_fields": [ { "key": "field_banner_icon", "label": "Icon", "name": "icon", "type": "image", "return_format": "array" }, { "key": "field_banner_title", "label": "Tiêu đề", "name": "title", "type": "text" }, { "key": "field_banner_link", "label": "Link", "name": "link", "type": "link", "return_format": "array" } ] },
+
+        { "key": "field_tab_intro", "label": "Intro", "name": "", "type": "tab", "placement": "top" },
+        { "key": "field_show_section_intro", "label": "Hiển thị Intro", "name": "show_section_intro", "type": "true_false", "default_value": 1, "ui": 1 },
+        { "key": "field_intro_title", "label": "Tiêu đề", "name": "intro_title", "type": "text" },
+        { "key": "field_intro_description", "label": "Mô tả", "name": "intro_description", "type": "wysiwyg" },
+        { "key": "field_intro_image", "label": "Hình ảnh", "name": "intro_image", "type": "image", "return_format": "array" },
+        { "key": "field_intro_video_url", "label": "Video URL", "name": "intro_video_url", "type": "url" },
+        { "key": "field_intro_sub_description", "label": "Mô tả phụ", "name": "intro_sub_description", "type": "wysiwyg" },
+        { "key": "field_intro_button", "label": "Nút bấm", "name": "intro_button", "type": "link", "return_format": "array" },
+        { "key": "field_intro_stats", "label": "Thống kê", "name": "intro_stats", "type": "repeater", "sub_fields": [ { "key": "field_stat_icon", "label": "Icon", "name": "icon", "type": "image", "return_format": "array" }, { "key": "field_stat_number", "label": "Số lượng", "name": "number", "type": "number" }, { "key": "field_stat_title", "label": "Tiêu đề", "name": "title", "type": "text" } ] },
+
+        { "key": "field_tab_value", "label": "Value", "name": "", "type": "tab", "placement": "top" },
+        { "key": "field_show_section_value", "label": "Hiển thị Value", "name": "show_section_value", "type": "true_false", "default_value": 1, "ui": 1 },
+        { "key": "field_value_title", "label": "Tiêu đề", "name": "value_title", "type": "text" },
+        { "key": "field_value_description", "label": "Mô tả", "name": "value_description", "type": "wysiwyg" },
+        { "key": "field_value_items", "label": "Các giá trị", "name": "value_items", "type": "repeater", "sub_fields": [ { "key": "field_value_icon", "label": "Tên Icon (Google Font)", "name": "icon", "type": "text" }, { "key": "field_value_content", "label": "Nội dung", "name": "content", "type": "text" }, { "key": "field_value_link", "label": "Link", "name": "link", "type": "link", "return_format": "array" } ] },
+
+        { "key": "field_tab_doctor", "label": "Doctor", "name": "", "type": "tab", "placement": "top" },
+        { "key": "field_show_section_doctor", "label": "Hiển thị Doctor", "name": "show_section_doctor", "type": "true_false", "default_value": 1, "ui": 1 },
+        { "key": "field_doctor_title", "label": "Tiêu đề", "name": "doctor_title", "type": "text" },
+        { "key": "field_doctor_description", "label": "Mô tả", "name": "doctor_description", "type": "wysiwyg" },
+        { "key": "field_doctor_button", "label": "Nút Xem tất cả", "name": "doctor_button", "type": "link", "return_format": "array" },
+
+        { "key": "field_tab_outstanding", "label": "Outstanding", "name": "", "type": "tab", "placement": "top" },
+        { "key": "field_show_section_outstanding", "label": "Hiển thị Outstanding", "name": "show_section_outstanding", "type": "true_false", "default_value": 1, "ui": 1 },
+        { "key": "field_outstanding_title", "label": "Tiêu đề", "name": "outstanding_title", "type": "text" },
+        { "key": "field_outstanding_button", "label": "Nút Xem tất cả", "name": "outstanding_button", "type": "link", "return_format": "array" },
+
+        { "key": "field_tab_device", "label": "Device", "name": "", "type": "tab", "placement": "top" },
+        { "key": "field_show_section_device", "label": "Hiển thị Device", "name": "show_section_device", "type": "true_false", "default_value": 1, "ui": 1 },
+        { "key": "field_device_slides", "label": "Slides Thiết bị", "name": "device_slides", "type": "repeater", "sub_fields": [ { "key": "field_device_image", "label": "Hình ảnh", "name": "image", "type": "image", "return_format": "array" }, { "key": "field_device_title", "label": "Tiêu đề Slide", "name": "title", "type": "text" }, { "key": "field_device_content", "label": "Nội dung", "name": "content", "type": "wysiwyg" } ] },
+
+        { "key": "field_tab_service", "label": "Service", "name": "", "type": "tab", "placement": "top" },
+        { "key": "field_show_section_service", "label": "Hiển thị Service", "name": "show_section_service", "type": "true_false", "default_value": 1, "ui": 1 },
+        { "key": "field_service_title", "label": "Tiêu đề", "name": "service_title", "type": "text" },
+        { "key": "field_service_description", "label": "Mô tả", "name": "service_description", "type": "wysiwyg" },
+        { "key": "field_home_services", "label": "Chọn Dịch vụ hiển thị", "name": "home_services", "type": "relationship", "post_type": ["dich-vu"], "return_format": "object" },
+        { "key": "field_service_button", "label": "Nút Xem tất cả", "name": "service_button", "type": "link", "return_format": "array" },
+
+        { "key": "field_tab_procedure", "label": "Procedure", "name": "", "type": "tab", "placement": "top" },
+        { "key": "field_show_section_procedure", "label": "Hiển thị Procedure", "name": "show_section_procedure", "type": "true_false", "default_value": 1, "ui": 1 },
+        { "key": "field_procedure_title", "label": "Tiêu đề Quy trình", "name": "procedure_title", "type": "text" },
+        { "key": "field_procedure_steps", "label": "Các bước quy trình", "name": "procedure_steps", "type": "repeater", "sub_fields": [ { "key": "field_step_label", "label": "Tên Bước (VD: Bước 1)", "name": "step_label", "type": "text" }, { "key": "field_step_description", "label": "Mô tả", "name": "step_description", "type": "wysiwyg" } ] },
+        { "key": "field_procedure_form_title", "label": "Tiêu đề Form", "name": "procedure_form_title", "type": "text" },
+        { "key": "field_procedure_form_image", "label": "Hình ảnh cạnh Form", "name": "procedure_form_image", "type": "image", "return_format": "array" },
+        { "key": "field_procedure_contact_form", "label": "Chọn Contact Form", "name": "procedure_contact_form", "type": "post_object", "post_type": ["wpcf7_contact_form"], "return_format": "object" },
+
+        { "key": "field_tab_new", "label": "New", "name": "", "type": "tab", "placement": "top" },
+        { "key": "field_show_section_new", "label": "Hiển thị New", "name": "show_section_new", "type": "true_false", "default_value": 1, "ui": 1 },
+        { "key": "field_new_title", "label": "Tiêu đề", "name": "new_title", "type": "text" }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates/template-home.php"
+            }
+        ]
+    ],
+    "style": "default",
+    "active": true
+}

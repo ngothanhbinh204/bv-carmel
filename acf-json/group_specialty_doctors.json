@@ -1,0 +1,57 @@
+{
+    "key": "group_specialty_doctors",
+    "title": "Danh sách Bác sĩ chuyên khoa",
+    "fields": [
+		{
+			"key": "field_specialty_doctors_icon",
+			"label": "Icon",
+			"name": "specialty_doctors_icon",
+			"type": "image",
+			"return_format": "array"
+		},
+        {
+            "key": "field_specialty_doctors",
+            "label": "Bác sĩ",
+            "name": "specialty_doctors",
+            "type": "relationship",
+            "instructions": "Chọn các Bác sĩ thuộc chuyên khoa này",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "bac-si"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "chuyen-khoa"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": ""
+}

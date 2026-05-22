@@ -1,0 +1,462 @@
+{
+    "key": "group_template_about",
+    "title": "Về chúng tôi",
+    "fields": [
+        {
+            "key": "field_tab_ab_mission",
+            "label": "Mission",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_show_section_mission",
+            "label": "Hiển thị Mission",
+            "name": "show_section_mission",
+            "type": "true_false",
+            "default_value": 1,
+            "ui": 1
+        },
+        {
+            "key": "field_mission_bg_image",
+            "label": "Hình nền Background",
+            "name": "mission_bg_image",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_mission_decore_image",
+            "label": "Hình trang trí (Decore)",
+            "name": "mission_decore_image",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_mission_title",
+            "label": "Tiêu đề chính (H1)",
+            "name": "mission_title",
+            "type": "text"
+        },
+        {
+            "key": "field_mission_subtitle",
+            "label": "Slogan",
+            "name": "mission_subtitle",
+            "type": "text"
+        },
+        {
+            "key": "field_mission_description",
+            "label": "Nội dung mô tả",
+            "name": "mission_description",
+            "type": "wysiwyg"
+        },
+        {
+            "key": "field_mission_items",
+            "label": "Tầm nhìn & Sứ mệnh",
+            "name": "mission_items",
+            "type": "repeater",
+            "sub_fields": [
+                {
+                    "key": "field_mission_item_label",
+                    "label": "Nhãn (VD: Tầm nhìn)",
+                    "name": "label",
+                    "type": "text"
+                },
+                {
+                    "key": "field_mission_item_content",
+                    "label": "Nội dung",
+                    "name": "content",
+                    "type": "wysiwyg"
+                }
+            ]
+        },
+
+        {
+            "key": "field_tab_ab_carmel",
+            "label": "Carmel Values",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_show_section_carmel",
+            "label": "Hiển thị Carmel Values",
+            "name": "show_section_carmel",
+            "type": "true_false",
+            "default_value": 1,
+            "ui": 1
+        },
+        {
+            "key": "field_carmel_bg_image",
+            "label": "Hình nền Background",
+            "name": "carmel_bg_image",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_carmel_letters",
+            "label": "Chữ cái CARMEL",
+            "name": "carmel_letters",
+            "type": "repeater",
+            "sub_fields": [
+                {
+                    "key": "field_carmel_letter",
+                    "label": "Ký tự",
+                    "name": "letter",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "key": "field_carmel_values",
+            "label": "Triết lý (mỗi chữ cái)",
+            "name": "carmel_values",
+            "type": "repeater",
+            "sub_fields": [
+                {
+                    "key": "field_carmel_value_title",
+                    "label": "Tiêu đề (VD: Tận tâm)",
+                    "name": "title",
+                    "type": "text"
+                },
+                {
+                    "key": "field_carmel_value_content",
+                    "label": "Nội dung",
+                    "name": "content",
+                    "type": "wysiwyg"
+                }
+            ]
+        },
+
+        {
+            "key": "field_tab_ab_diagram",
+            "label": "Diagram",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_show_section_diagram",
+            "label": "Hiển thị Diagram",
+            "name": "show_section_diagram",
+            "type": "true_false",
+            "default_value": 1,
+            "ui": 1
+        },
+        {
+            "key": "field_diagram_title",
+            "label": "Tiêu đề Ban lãnh đạo",
+            "name": "diagram_title",
+            "type": "text"
+        },
+        {
+            "key": "field_diagram_subtitle",
+            "label": "Mô tả",
+            "name": "diagram_subtitle",
+            "type": "wysiwyg"
+        },
+        {
+            "key": "field_diagram_leader",
+            "label": "Lãnh đạo chính",
+            "name": "diagram_leader",
+            "type": "group",
+            "sub_fields": [
+                {
+                    "key": "field_leader_image",
+                    "label": "Ảnh",
+                    "name": "image",
+                    "type": "image",
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_leader_degree",
+                    "label": "Học hàm học vị",
+                    "name": "degree",
+                    "type": "text"
+                },
+                {
+                    "key": "field_leader_name",
+                    "label": "Tên",
+                    "name": "name",
+                    "type": "text"
+                },
+                {
+                    "key": "field_leader_position",
+                    "label": "Chức vụ",
+                    "name": "position",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "key": "field_diagram_members",
+            "label": "Thành viên Ban lãnh đạo",
+            "name": "diagram_members",
+            "type": "repeater",
+            "sub_fields": [
+                {
+                    "key": "field_member_image",
+                    "label": "Ảnh",
+                    "name": "image",
+                    "type": "image",
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_member_degree",
+                    "label": "Học hàm học vị",
+                    "name": "degree",
+                    "type": "text"
+                },
+                {
+                    "key": "field_member_name",
+                    "label": "Tên",
+                    "name": "name",
+                    "type": "text"
+                },
+                {
+                    "key": "field_member_position",
+                    "label": "Chức vụ",
+                    "name": "position",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "key": "field_diagram_org_title",
+            "label": "Tiêu đề Sơ đồ tổ chức",
+            "name": "diagram_org_title",
+            "type": "text"
+        },
+        {
+            "key": "field_diagram_org_image",
+            "label": "Hình ảnh Sơ đồ",
+            "name": "diagram_org_image",
+            "type": "image",
+            "return_format": "array"
+        },
+
+        {
+            "key": "field_tab_ab_space",
+            "label": "Space",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_show_section_space",
+            "label": "Hiển thị Space",
+            "name": "show_section_space",
+            "type": "true_false",
+            "default_value": 1,
+            "ui": 1
+        },
+        {
+            "key": "field_space_title",
+            "label": "Tiêu đề",
+            "name": "space_title",
+            "type": "text"
+        },
+        {
+            "key": "field_space_subtitle",
+            "label": "Mô tả",
+            "name": "space_subtitle",
+            "type": "wysiwyg"
+        },
+        {
+            "key": "field_space_tabs",
+            "label": "Các Tab không gian",
+            "name": "space_tabs",
+            "type": "repeater",
+            "sub_fields": [
+                {
+                    "key": "field_space_tab_name",
+                    "label": "Tên Tab",
+                    "name": "tab_name",
+                    "type": "text"
+                },
+                {
+                    "key": "field_space_tab_images",
+                    "label": "Album ảnh",
+                    "name": "images",
+                    "type": "gallery",
+                    "return_format": "array"
+                }
+            ]
+        },
+
+        {
+            "key": "field_tab_ab_achievements",
+            "label": "Achievements",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_show_section_achievements",
+            "label": "Hiển thị Achievements",
+            "name": "show_section_achievements",
+            "type": "true_false",
+            "default_value": 1,
+            "ui": 1
+        },
+        {
+            "key": "field_achievements_title",
+            "label": "Tiêu đề",
+            "name": "achievements_title",
+            "type": "text"
+        },
+        {
+            "key": "field_achievements_subtitle",
+            "label": "Mô tả",
+            "name": "achievements_subtitle",
+            "type": "wysiwyg"
+        },
+        {
+            "key": "field_achievements_items",
+            "label": "Các thành tựu",
+            "name": "achievements_items",
+            "type": "repeater",
+            "sub_fields": [
+                {
+                    "key": "field_achievement_image",
+                    "label": "Hình ảnh",
+                    "name": "image",
+                    "type": "image",
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_achievement_date",
+                    "label": "Ngày (VD: 12/03/2026)",
+                    "name": "date",
+                    "type": "text"
+                },
+                {
+                    "key": "field_achievement_title",
+                    "label": "Tiêu đề",
+                    "name": "title",
+                    "type": "text"
+                },
+                {
+                    "key": "field_achievement_desc",
+                    "label": "Mô tả ngắn",
+                    "name": "desc",
+                    "type": "textarea"
+                },
+                {
+                    "key": "field_achievement_link",
+                    "label": "Link",
+                    "name": "link",
+                    "type": "link",
+                    "return_format": "array"
+                }
+            ]
+        },
+
+        {
+            "key": "field_tab_ab_join",
+            "label": "Join",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_show_section_join",
+            "label": "Hiển thị Join",
+            "name": "show_section_join",
+            "type": "true_false",
+            "default_value": 1,
+            "ui": 1
+        },
+        {
+            "key": "field_join_image",
+            "label": "Hình nền",
+            "name": "join_image",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_join_title",
+            "label": "Tiêu đề",
+            "name": "join_title",
+            "type": "text"
+        },
+        {
+            "key": "field_join_subtitle",
+            "label": "Mô tả",
+            "name": "join_subtitle",
+            "type": "wysiwyg"
+        },
+        {
+            "key": "field_join_button",
+            "label": "Nút bấm",
+            "name": "join_button",
+            "type": "link",
+            "return_format": "array"
+        },
+
+        {
+            "key": "field_tab_ab_user",
+            "label": "User Feedback",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_show_section_user",
+            "label": "Hiển thị User Feedback",
+            "name": "show_section_user",
+            "type": "true_false",
+            "default_value": 1,
+            "ui": 1
+        },
+        {
+            "key": "field_user_title",
+            "label": "Tiêu đề",
+            "name": "user_title",
+            "type": "text"
+        },
+        {
+            "key": "field_user_testimonials",
+            "label": "Cảm nhận khách hàng",
+            "name": "user_testimonials",
+            "type": "repeater",
+            "sub_fields": [
+                {
+                    "key": "field_testimonial_quote",
+                    "label": "Nội dung cảm nhận",
+                    "name": "quote",
+                    "type": "textarea"
+                },
+                {
+                    "key": "field_testimonial_name",
+                    "label": "Tên khách hàng",
+                    "name": "name",
+                    "type": "text"
+                },
+                {
+                    "key": "field_testimonial_role",
+                    "label": "Vai trò (VD: Người nhà bệnh nhân)",
+                    "name": "role",
+                    "type": "text"
+                },
+                {
+                    "key": "field_testimonial_image",
+                    "label": "Hình ảnh",
+                    "name": "image",
+                    "type": "image",
+                    "return_format": "array"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates/template-about.php"
+            }
+        ]
+    ],
+    "style": "default",
+    "active": true
+}
