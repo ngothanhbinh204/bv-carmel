@@ -45,6 +45,94 @@ function canhcam_style()
 	}
 }
 
+function carmel_enqueue_specialty_search_assets()
+{
+	if (!is_page_template('templates/template-chuyen-khoa.php')) {
+		return;
+	}
+
+	wp_enqueue_script(
+		'specialty-search',
+		THEME_URI . '/scripts/specialty-search.js',
+		array(),
+		GENERATE_VERSION,
+		true
+	);
+
+	wp_localize_script('specialty-search', 'SpecialtySearch', array(
+		'ajaxUrl' => admin_url('admin-ajax.php'),
+		'action' => 'carmel_search_specialties',
+		'nonce' => wp_create_nonce('carmel_specialty_search_nonce'),
+		'emptyText' => 'Khong tim thay chuyen khoa phu hop.',
+		'errorText' => 'Da co loi xay ra. Vui long thu lai.',
+	));
+}
+add_action('wp_enqueue_scripts', 'carmel_enqueue_specialty_search_assets', 20);
+
+function carmel_enqueue_service_archive_assets()
+{
+	if (!is_post_type_archive('dich-vu') && !is_tax('danh-muc-dich-vu')) {
+		return;
+	}
+
+	wp_enqueue_script(
+		'dropfilter-basic',
+		THEME_URI . '/scripts/dropfilter-basic.js',
+		array(),
+		GENERATE_VERSION,
+		true
+	);
+
+	wp_enqueue_script(
+		'service-archive',
+		THEME_URI . '/scripts/service-archive.js',
+		array(),
+		GENERATE_VERSION,
+		true
+	);
+
+	wp_localize_script('service-archive', 'CarmelServiceArchive', array(
+		'ajaxUrl' => admin_url('admin-ajax.php'),
+		'action' => 'carmel_filter_services',
+		'nonce' => wp_create_nonce('carmel_service_archive_nonce'),
+		'emptyText' => 'Không tìm thấy dịch vụ phù hợp.',
+		'errorText' => 'Đã có lỗi xảy ra. Vui lòng thử lại.',
+	));
+}
+add_action('wp_enqueue_scripts', 'carmel_enqueue_service_archive_assets', 20);
+
+function carmel_enqueue_doctor_archive_assets()
+{
+	if (!is_page_template('templates/template-doctors.php')) {
+		return;
+	}
+
+	wp_enqueue_script(
+		'dropfilter-basic',
+		THEME_URI . '/scripts/dropfilter-basic.js',
+		array(),
+		GENERATE_VERSION,
+		true
+	);
+
+	wp_enqueue_script(
+		'doctor-archive',
+		THEME_URI . '/scripts/doctor-archive.js',
+		array(),
+		GENERATE_VERSION,
+		true
+	);
+
+	wp_localize_script('doctor-archive', 'CarmelDoctorArchive', array(
+		'ajaxUrl' => admin_url('admin-ajax.php'),
+		'action' => 'carmel_filter_doctors',
+		'nonce' => wp_create_nonce('carmel_doctor_archive_nonce'),
+		'emptyText' => 'Không tìm thấy bác sĩ phù hợp.',
+		'errorText' => 'Đã có lỗi xảy ra. Vui lòng thử lại.',
+	));
+}
+add_action('wp_enqueue_scripts', 'carmel_enqueue_doctor_archive_assets', 20);
+
 if (!function_exists('canhcam_setup')) :
 	function canhcam_setup()
 	{
@@ -242,6 +330,20 @@ add_filter('rank_math/frontend/breadcrumb/items', function ($crumbs, $class) {
 		$crumbs[0][0] = 'Trang chủ';
 		$crumbs[0][1] = $homepage_url;
 	}
+
+	foreach ($crumbs as $index => $crumb) {
+		if (!isset($crumb[0])) {
+			continue;
+		}
+
+		if ($crumb[0] === 'Danh mục dịch vụ') {
+			$crumbs[$index][0] = 'Dịch vụ';
+			if (isset($crumbs[$index][1]) && !$crumbs[$index][1]) {
+				$crumbs[$index][1] = get_post_type_archive_link('dich-vu');
+			}
+		}
+	}
+
 	return $crumbs;
 }, 10, 2);
 

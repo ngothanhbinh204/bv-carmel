@@ -1,0 +1,48 @@
+{
+    "key": "group_template_specialty_list",
+    "title": "Template Chuyen khoa",
+    "fields": [
+        {
+            "key": "field_template_specialty_list_tab",
+            "label": "Danh sach",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_specialty_list_title",
+            "label": "Tieu de",
+            "name": "specialty_list_title",
+            "type": "text"
+        },
+        {
+            "key": "field_specialty_list_search_placeholder",
+            "label": "Placeholder tim kiem",
+            "name": "specialty_list_search_placeholder",
+            "type": "text"
+        },
+        {
+            "key": "field_specialty_list_empty_text",
+            "label": "Thong bao khong co ket qua",
+            "name": "specialty_list_empty_text",
+            "type": "text"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates/template-chuyen-khoa.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": ""
+}

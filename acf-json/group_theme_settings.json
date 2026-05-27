@@ -113,7 +113,40 @@
                 }
             ]
         },
+       
         {
+            "key": "field_tab_service_detail_form",
+            "label": "Tab Form Chi tiết dịch vụ",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_service_consult_heading",
+            "label": "Tieu de form tu van",
+            "name": "service_consult_heading",
+            "type": "text"
+        },
+        {
+            "key": "field_service_consult_form_shortcode",
+            "label": "Shortcode form tu van",
+            "name": "service_consult_form_shortcode",
+            "type": "textarea",
+            "rows": 2,
+            "instructions": "Vi du: [contact-form-7 id=\"123\" title=\"Form tu van\"]"
+        },
+        {
+            "key": "field_service_hotline_label",
+            "label": "Nhan hotline",
+            "name": "service_hotline_label",
+            "type": "text"
+        },
+        {
+            "key": "field_service_hotline_number",
+            "label": "So hotline",
+            "name": "service_hotline_number",
+            "type": "text"
+        },
+		 {
             "key": "field_tab_fix_toc",
             "label": "Fix TOC CTA",
             "name": "",

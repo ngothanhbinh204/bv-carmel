@@ -8,9 +8,10 @@ $icon = get_field('specialty_icon', $post_id);
 <a class="card-outstanding group" href="<?php echo esc_url($permalink); ?>">
 	<div class="icon">
 		<?php if ($icon && function_exists('get_image_attrachment')): ?>
-			<?php echo get_image_attrachment($icon, 'image'); ?>
+		<?php echo get_image_attrachment($icon, 'image'); ?>
 		<?php else: ?>
-			<img src="<?php echo esc_url(get_template_directory_uri() . '/img/outstanding.svg'); ?>" alt="<?php echo esc_attr($title); ?>"/>
+		<img src="<?php echo esc_url(get_template_directory_uri() . '/img/outstanding.svg'); ?>"
+			alt="<?php echo esc_attr($title); ?>" />
 		<?php endif; ?>
 	</div>
 	<div class="content-outstanding">

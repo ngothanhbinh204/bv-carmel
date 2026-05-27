@@ -1,0 +1,157 @@
+{
+    "key": "group_service_detail",
+    "title": "Chi tiet Dich vu",
+    "fields": [
+        {
+            "key": "field_service_detail_tab_banner",
+            "label": "Banner",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_service_banner_image",
+            "label": "Anh banner",
+            "name": "service_banner_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_service_banner_title",
+            "label": "Tieu de banner",
+            "name": "service_banner_title",
+            "type": "wysiwyg"
+        },
+        {
+            "key": "field_service_tag_name",
+            "label": "Tag name",
+            "name": "tag_name",
+            "type": "text",
+            "instructions": "Noi dung hien thi duoi tieu de, vi du: Tron hanh trinh - Tron an tam"
+        },
+        {
+            "key": "field_service_detail_tab_content",
+            "label": "Noi dung",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_service_table_heading",
+            "label": "Tieu de bang dich vu",
+            "name": "service_table_heading",
+            "type": "text"
+        },
+        {
+            "key": "field_service_table_items",
+            "label": "Danh sach hang dich vu",
+            "name": "service_table_items",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Them hang",
+            "sub_fields": [
+                {
+                    "key": "field_service_table_item_title",
+                    "label": "Tieu de",
+                    "name": "item_title",
+                    "type": "text"
+                },
+                {
+                    "key": "field_service_table_item_description",
+                    "label": "Mo ta",
+                    "name": "item_description",
+                    "type": "wysiwyg",
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 0
+                }
+            ]
+        },
+        {
+            "key": "field_service_prepare_heading",
+            "label": "Tieu de chuan bi",
+            "name": "service_prepare_heading",
+            "type": "text"
+        },
+        {
+            "key": "field_service_prepare_intro",
+            "label": "Mo ta ngan chuan bi",
+            "name": "service_prepare_intro",
+            "type": "wysiwyg",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0
+        },
+        {
+            "key": "field_service_prepare_items",
+            "label": "Danh sach can chuan bi",
+            "name": "service_prepare_items",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Them muc",
+            "sub_fields": [
+                {
+                    "key": "field_service_prepare_item_title",
+                    "label": "Tieu de",
+                    "name": "prepare_title",
+                    "type": "text"
+                },
+                {
+                    "key": "field_service_prepare_item_content",
+                    "label": "Noi dung",
+                    "name": "prepare_content",
+                    "type": "wysiwyg",
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 0
+                }
+            ]
+        },
+        {
+            "key": "field_service_detail_tab_related",
+            "label": "Dich vu lien quan",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_service_related_heading",
+            "label": "Tieu de dich vu lien quan",
+            "name": "service_related_heading",
+            "type": "text"
+        },
+        {
+            "key": "field_service_related_posts",
+            "label": "Danh sach dich vu lien quan (tuy chon)",
+            "name": "service_related_posts",
+            "type": "relationship",
+            "post_type": [
+                "dich-vu"
+            ],
+            "filters": [
+                "search",
+                "post_type"
+            ],
+            "return_format": "object"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "dich-vu"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": ""
+}

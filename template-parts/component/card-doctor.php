@@ -7,6 +7,13 @@ $excerpt = get_the_excerpt();
 // Chuyên khoa (nếu có lưu ở ACF, hoặc lấy term nếu là taxonomy. Ở đây giả định dùng field ACF 'doctor_specialty_name')
 $specialty = get_field('doctor_specialty_name', $post_id);
 
+if (!$specialty && function_exists('carmel_get_doctor_specialty_names')) {
+	$specialty_names = carmel_get_doctor_specialty_names($post_id);
+	if (!empty($specialty_names)) {
+		$specialty = implode(', ', $specialty_names);
+	}
+}
+
 $image = function_exists('get_image_post') ? get_image_post($post_id, 'image') : get_the_post_thumbnail($post_id, 'full', array('class' => 'lozad'));
 ?>
 <a class="card-doctor group" href="<?php echo esc_url($permalink); ?>">

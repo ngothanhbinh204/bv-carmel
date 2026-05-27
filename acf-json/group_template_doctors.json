@@ -1,0 +1,113 @@
+{
+    "key": "group_template_doctors",
+    "title": "Template Doi Ngu Bac Si",
+    "fields": [
+        {
+            "key": "field_doctors_tab_intro",
+            "label": "Doctor Intro",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_doctor_intro_title",
+            "label": "Tieu de gioi thieu",
+            "name": "doctor_intro_title",
+            "type": "text"
+        },
+        {
+            "key": "field_doctor_intro_content",
+            "label": "Noi dung gioi thieu",
+            "name": "doctor_intro_content",
+            "type": "wysiwyg"
+        },
+        {
+            "key": "field_doctor_intro_values",
+            "label": "Danh sach gia tri",
+            "name": "doctor_intro_values",
+            "type": "repeater",
+            "button_label": "Them gia tri",
+            "sub_fields": [
+                {
+                    "key": "field_doctor_intro_value_icon",
+                    "label": "Icon",
+                    "name": "value_icon",
+                    "type": "image",
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_doctor_intro_value_title",
+                    "label": "Tieu de",
+                    "name": "value_title",
+                    "type": "wysiwyg"
+                },
+                {
+                    "key": "field_doctor_intro_value_desc",
+                    "label": "Mo ta",
+                    "name": "value_desc",
+                    "type": "wysiwyg"
+                }
+            ]
+        },
+        {
+            "key": "field_doctors_tab_listing",
+            "label": "Doctor Listing",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_doctor_list_title",
+            "label": "Tieu de danh sach",
+            "name": "doctor_list_title",
+            "type": "text"
+        },
+        {
+            "key": "field_doctor_list_subtitle",
+            "label": "Mo ta danh sach",
+            "name": "doctor_list_subtitle",
+            "type": "wysiwyg"
+        },
+        {
+            "key": "field_doctor_search_placeholder",
+            "label": "Placeholder tim bac si",
+            "name": "doctor_search_placeholder",
+            "type": "text"
+        },
+        {
+            "key": "field_doctor_specialty_placeholder",
+            "label": "Placeholder chuyen khoa",
+            "name": "doctor_specialty_placeholder",
+            "type": "text"
+        },
+        {
+            "key": "field_doctor_search_button_text",
+            "label": "Text nut tim kiem",
+            "name": "doctor_search_button_text",
+            "type": "text"
+        },
+        {
+            "key": "field_doctor_empty_text",
+            "label": "Thong bao khong co ket qua",
+            "name": "doctor_empty_text",
+            "type": "text"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates/template-doctors.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": ""
+}

@@ -18,24 +18,32 @@ if ($queried instanceof WP_Term) {
 }
 
 $banners = get_field('banner_select_page', $context_id);
+
+// Backward compatibility: field name cu trong project dang de tieng Viet.
+if (!$banners) {
+	$banners = get_field('Chọn banner hiển thị', $context_id);
+}
 ?>
 
 <?php if ($banners) : ?>
-	<?php foreach ($banners as $banner_post) :
-		$banner_image = get_field('banner_image', $banner_post->ID);
+<?php foreach ($banners as $banner_post) :
+		$banner_id = is_object($banner_post) ? $banner_post->ID : (int) $banner_post;
+		$banner_image = get_field('banner_image', $banner_id);
+		$banner_post_image = function_exists('get_image_post') ? get_image_post($banner_id, 'image') : '';
 	?>
-	<section class="section-normalBanner">
-		<div class="img img-ratio ratio:pt-[640_1920] zoom-img">
-			<?php if ($banner_image && function_exists('get_image_attrachment')) :
+<section class="section-normalBanner">
+	<div class="img img-ratio ratio:pt-[640_1920] zoom-img">
+		<?php if ($banner_image && function_exists('get_image_attrachment')) :
 				echo get_image_attrachment($banner_image, 'image');
+			elseif ($banner_post_image) :
+				echo $banner_post_image;
 			else : ?>
-				<img class="lozad"
-					data-src="<?php echo esc_url(get_template_directory_uri() . '/img/default-banner.jpg'); ?>"
-					alt="<?php echo esc_attr(get_the_title()); ?>"/>
-			<?php endif; ?>
-		</div>
-	</section>
-	<?php endforeach; ?>
+		<img class="lozad" data-src="<?php echo esc_url(get_template_directory_uri() . '/img/default-banner.jpg'); ?>"
+			alt="<?php echo esc_attr(get_the_title()); ?>" />
+		<?php endif; ?>
+	</div>
+</section>
+<?php endforeach; ?>
 <?php endif; ?>
 
 <section class="global-breadcrumb">
@@ -44,11 +52,11 @@ $banners = get_field('banner_select_page', $context_id);
 			<?php if (function_exists('rank_math_the_breadcrumbs')) :
 				rank_math_the_breadcrumbs();
 			else : ?>
-				<p>
-					<a href="<?php echo esc_url(home_url('/')); ?>">Trang chủ</a>
-					<span class="separator"> |</span>
-					<span class="last"><?php echo esc_html(get_the_title()); ?></span>
-				</p>
+			<p>
+				<a href="<?php echo esc_url(home_url('/')); ?>">Trang chủ</a>
+				<span class="separator"> |</span>
+				<span class="last"><?php echo esc_html(get_the_title()); ?></span>
+			</p>
 			<?php endif; ?>
 		</nav>
 	</div>

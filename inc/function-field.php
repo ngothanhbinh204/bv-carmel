@@ -62,7 +62,7 @@ function add_field_select_banner()
 	acf_add_local_field(array(
 		'key' => 'banner_select_page',
 		'label' => 'Chọn banner hiển thị',
-		'name' => 'Chọn banner hiển thị',
+		'name' => 'banner_select_page',
 		'type' => 'post_object',
 		'post_type' => 'banner',
 		'multiple' => 1,

@@ -207,9 +207,9 @@
 			</form>
 			<div class="menu-list">
 				<?php 
-				if (has_nav_menu('primary-menu')) {
+				if (has_nav_menu('header-menu')) {
 					wp_nav_menu(array(
-						'theme_location' => 'primary-menu',
+						'theme_location' => 'header-menu',
 						'container' => false,
 						'menu_class' => ''
 					));

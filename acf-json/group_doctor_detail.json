@@ -1,0 +1,140 @@
+{
+    "key": "group_doctor_detail",
+    "title": "Chi tiet Bac si",
+    "fields": [
+        {
+            "key": "field_doctor_detail_tab_summary",
+            "label": "Thong tin tong quan",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_doctor_credential",
+            "label": "Hoc ham hoc vi",
+            "name": "doctor_credential",
+            "type": "text"
+        },
+        {
+            "key": "field_doctor_position_list",
+            "label": "Danh sach chuc danh",
+            "name": "doctor_position_list",
+            "type": "repeater",
+            "button_label": "Thêm chức danh",
+            "sub_fields": [
+                {
+                    "key": "field_doctor_position_item",
+                    "label": "Chức danh",
+                    "name": "doctor_position_item",
+                    "type": "text"
+                }
+            ]
+        },
+       
+        {
+            "key": "field_doctor_booking_link",
+            "label": "Nút đặt lịch",
+            "name": "doctor_booking_link",
+            "type": "link"
+        },
+        {
+            "key": "field_doctor_intro_heading",
+            "label": "Tieu de gioi thieu",
+            "name": "doctor_intro_heading",
+            "type": "text"
+        },
+        {
+            "key": "field_doctor_intro_content",
+            "label": "Noi dung gioi thieu",
+            "name": "doctor_intro_content",
+            "type": "wysiwyg"
+        },
+        {
+            "key": "field_doctor_detail_tab_tabs",
+            "label": "Tab noi dung",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_doctor_content_tabs",
+            "label": "Danh sach tab noi dung",
+            "name": "doctor_content_tabs",
+            "type": "repeater",
+            "button_label": "Them tab noi dung",
+            "sub_fields": [
+                {
+                    "key": "field_doctor_content_tabs_label",
+                    "label": "Label tab",
+                    "name": "label_tab",
+                    "type": "text"
+                },
+                {
+                    "key": "field_doctor_content_tabs_content",
+                    "label": "Noi dung tab",
+                    "name": "content_tab",
+                    "type": "repeater",
+                    "button_label": "Them noi dung",
+                    "sub_fields": [
+                        {
+                            "key": "field_doctor_content_tabs_expertise_sub_heading",
+                            "label": "Tieu de phu",
+                            "name": "expertise_sub_heading",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_doctor_content_tabs_expertise_content",
+                            "label": "Noi dung",
+                            "name": "expertise_content",
+                            "type": "wysiwyg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_doctor_detail_tab_related",
+            "label": "Bac si lien quan",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_doctor_related_heading",
+            "label": "Tieu de bac si lien quan",
+            "name": "doctor_related_heading",
+            "type": "text"
+        },
+        {
+            "key": "field_doctor_related_posts",
+            "label": "Danh sach bac si lien quan",
+            "name": "doctor_related_posts",
+            "type": "relationship",
+            "post_type": [
+                "bac-si"
+            ],
+            "filters": [
+                "search",
+                "post_type"
+            ],
+            "return_format": "object"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "bac-si"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": ""
+}

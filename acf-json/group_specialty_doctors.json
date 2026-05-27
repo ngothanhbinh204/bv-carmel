@@ -1,39 +1,195 @@
 {
     "key": "group_specialty_doctors",
-    "title": "Danh sách Bác sĩ chuyên khoa",
+    "title": "Chi tiet Chuyen khoa",
     "fields": [
+        {
+            "key": "field_specialty_tab_intro",
+            "label": "Gioi thieu",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
 		{
-			"key": "field_specialty_doctors_icon",
-			"label": "Icon",
-			"name": "specialty_doctors_icon",
-			"type": "image",
+            "key": "field_specialty_intro_icon",
+            "label": "Icon gioi thieu",
+            "name": "specialty_icon",
+            "type": "image",
 			"return_format": "array"
-		},
+        },
+        {
+            "key": "field_specialty_intro_title",
+            "label": "Tieu de gioi thieu",
+            "name": "specialty_intro_title",
+            "type": "text"
+        },
+        {
+            "key": "field_specialty_intro_content",
+            "label": "Noi dung gioi thieu",
+            "name": "specialty_intro_content",
+            "type": "wysiwyg"
+        },
+        {
+            "key": "field_specialty_intro_image",
+            "label": "Anh gioi thieu",
+            "name": "specialty_intro_image",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_specialty_intro_blocks",
+            "label": "Khoi noi dung mo rong",
+            "name": "specialty_intro_blocks",
+            "type": "repeater",
+            "button_label": "Them khoi",
+            "sub_fields": [
+                {
+                    "key": "field_specialty_intro_block_layout",
+                    "label": "Layout",
+                    "name": "block_layout",
+                    "type": "select",
+                    "choices": {
+                        "image_left": "Image trai - Noi dung phai",
+                        "image_right": "Noi dung trai - Image phai"
+                    },
+                    "default_value": "image_left",
+                    "ui": 1,
+                    "return_format": "value"
+                },
+                {
+                    "key": "field_specialty_intro_block_title",
+                    "label": "Tieu de",
+                    "name": "block_title",
+                    "type": "text"
+                },
+                {
+                    "key": "field_specialty_intro_block_content",
+                    "label": "Noi dung",
+                    "name": "block_content",
+                    "type": "wysiwyg"
+                },
+                {
+                    "key": "field_specialty_intro_block_image",
+                    "label": "Anh",
+                    "name": "block_image",
+                    "type": "image",
+                    "return_format": "array"
+                }
+            ]
+        },
+        {
+            "key": "field_specialty_tab_services",
+            "label": "Dich vu",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_specialty_services_title",
+            "label": "Tieu de dich vu",
+            "name": "specialty_services_title",
+            "type": "text"
+        },
+        {
+            "key": "field_specialty_services_content",
+            "label": "Mo ta dich vu",
+            "name": "specialty_services_content",
+            "type": "wysiwyg"
+        },
+        {
+            "key": "field_specialty_services_items",
+            "label": "Danh sach dich vu",
+            "name": "specialty_services_items",
+            "type": "repeater",
+            "button_label": "Them dich vu",
+            "sub_fields": [
+                {
+                    "key": "field_specialty_service_title",
+                    "label": "Tieu de",
+                    "name": "service_title",
+                    "type": "text"
+                },
+                {
+                    "key": "field_specialty_service_content",
+                    "label": "Noi dung",
+                    "name": "service_content",
+                    "type": "wysiwyg"
+                },
+                {
+                    "key": "field_specialty_service_image",
+                    "label": "Anh",
+                    "name": "service_image",
+                    "type": "image",
+                    "return_format": "array"
+                }
+            ]
+        },
+        {
+            "key": "field_specialty_tab_doctors",
+            "label": "Danh sach bac si",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_specialty_doctors_title",
+            "label": "Tieu de bac si",
+            "name": "specialty_doctors_title",
+            "type": "text"
+        },
+        {
+            "key": "field_specialty_doctors_content",
+            "label": "Mo ta bac si",
+            "name": "specialty_doctors_content",
+            "type": "wysiwyg"
+        },
         {
             "key": "field_specialty_doctors",
-            "label": "Bác sĩ",
+            "label": "Bac si",
             "name": "specialty_doctors",
             "type": "relationship",
-            "instructions": "Chọn các Bác sĩ thuộc chuyên khoa này",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
+            "instructions": "Chon cac Bac si thuoc chuyen khoa nay",
             "post_type": [
                 "bac-si"
             ],
-            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type"
+            ],
+            "return_format": "object"
+        },
+        {
+            "key": "field_specialty_tab_articles",
+            "label": "Kien thuc y khoa",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_specialty_articles_title",
+            "label": "Tieu de bai viet",
+            "name": "specialty_articles_title",
+            "type": "text"
+        },
+        {
+            "key": "field_specialty_articles_content",
+            "label": "Mo ta bai viet",
+            "name": "specialty_articles_content",
+            "type": "wysiwyg"
+        },
+        {
+            "key": "field_specialty_articles",
+            "label": "Bai viet",
+            "name": "specialty_articles",
+            "type": "relationship",
+            "instructions": "Chon cac bai viet hien thi trong tab kien thuc y khoa",
+            "post_type": [
+                "post"
+            ],
             "filters": [
                 "search",
                 "post_type",
                 "taxonomy"
             ],
-            "elements": "",
-            "min": "",
-            "max": "",
             "return_format": "object"
         }
     ],
