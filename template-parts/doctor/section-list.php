@@ -76,7 +76,7 @@ $doctor_query = function_exists('carmel_build_doctor_query') ? carmel_build_doct
 					'name' => 'doctor_specialty',
 					'placeholder' => $doctor_specialty_placeholder,
 					'selected' => 'all',
-					'all_label' => 'Tất cả',
+					'all_label' => esc_html__('Chuyên khoa', 'canhcamtheme'),
 				)) : ''; ?>
 				<button class="btn-search" type="submit"
 					data-doctor-search="button"><span><?php echo esc_html($doctor_search_button_text); ?></span><span

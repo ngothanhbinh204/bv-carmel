@@ -143,21 +143,6 @@
             "type": "wysiwyg"
         },
         {
-            "key": "field_specialty_doctors",
-            "label": "Bac si",
-            "name": "specialty_doctors",
-            "type": "relationship",
-            "instructions": "Chon cac Bac si thuoc chuyen khoa nay",
-            "post_type": [
-                "bac-si"
-            ],
-            "filters": [
-                "search",
-                "post_type"
-            ],
-            "return_format": "object"
-        },
-        {
             "key": "field_specialty_tab_articles",
             "label": "Kien thuc y khoa",
             "name": "",

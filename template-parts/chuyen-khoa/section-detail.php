@@ -9,7 +9,20 @@ $detail_service_content = get_field('specialty_services_content');
 
 $detail_doctor_title = get_field('specialty_doctors_title');
 $detail_doctor_content = get_field('specialty_doctors_content');
-$detail_doctors = get_field('specialty_doctors');
+$detail_doctors_query = new WP_Query(array(
+	'post_type' => 'bac-si',
+	'post_status' => 'publish',
+	'posts_per_page' => -1,
+	'orderby' => 'date',
+	'order' => 'DESC',
+	'meta_query' => array(
+		array(
+			'key' => 'doctor_specialties',
+			'value' => '"' . get_the_ID() . '"',
+			'compare' => 'LIKE',
+		),
+	),
+));
 
 $detail_article_title = get_field('specialty_articles_title');
 $detail_article_content = get_field('specialty_articles_content');
@@ -227,13 +240,11 @@ $detail_articles = get_field('specialty_articles');
 						</div>
 						<?php endif; ?>
 
-						<?php if (!empty($detail_doctors)): ?>
+						<?php if ($detail_doctors_query->have_posts()): ?>
 						<div class="block-gridDoctor">
-							<?php foreach ($detail_doctors as $doctor_post):
-                                    $post = $doctor_post;
-                                    setup_postdata($post);
-                                    get_template_part('template-parts/component/card', 'doctor');
-                                endforeach; ?>
+							<?php while ($detail_doctors_query->have_posts()): $detail_doctors_query->the_post(); ?>
+							<?php get_template_part('template-parts/component/card', 'doctor'); ?>
+							<?php endwhile; ?>
 							<?php wp_reset_postdata(); ?>
 						</div>
 						<?php else: ?>

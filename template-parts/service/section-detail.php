@@ -12,11 +12,6 @@ $service_prepare_heading = get_field('service_prepare_heading', $post_id);
 $service_prepare_intro = get_field('service_prepare_intro', $post_id);
 $service_prepare_items = get_field('service_prepare_items', $post_id);
 
-$service_consult_heading = get_field('service_consult_heading', 'option');
-$service_consult_form_shortcode = get_field('service_consult_form_shortcode', 'option');
-$service_hotline_label = get_field('service_hotline_label', 'option');
-$service_hotline_number = get_field('service_hotline_number', 'option');
-
 $service_related_heading = get_field('service_related_heading', $post_id);
 $service_related_posts = get_field('service_related_posts', $post_id);
 
@@ -219,26 +214,7 @@ if (!empty($service_related_posts)) {
 					<?php endif; ?>
 				</div>
 
-				<div class="info-sidebar">
-					<div class="sidebar-inner">
-						<div class="form-consult">
-							<h3 class="form-heading"><?php echo esc_html($service_consult_heading); ?></h3>
-							<?php if ($service_consult_form_shortcode) : ?>
-							<?php echo do_shortcode($service_consult_form_shortcode); ?>
-							<?php endif; ?>
-							<?php if ($service_hotline_number) : ?>
-							<a class="contact-hotline mt-6"
-								href="tel:<?php echo esc_attr(preg_replace('/\D+/', '', $service_hotline_number)); ?>">
-								<div class="hotline-icon"><span class="material-symbols-outlined">phone_in_talk</span>
-								</div>
-								<div class="hotline-text">
-									<span><?php echo esc_html($service_hotline_label); ?></span><strong><?php echo esc_html($service_hotline_number); ?></strong>
-								</div>
-							</a>
-							<?php endif; ?>
-						</div>
-					</div>
-				</div>
+				<?php get_template_part('template-parts/component/form', 'consult'); ?>
 			</div>
 		</div>
 	</div>

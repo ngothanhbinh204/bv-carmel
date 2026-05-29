@@ -63,8 +63,8 @@ function carmel_enqueue_specialty_search_assets()
 		'ajaxUrl' => admin_url('admin-ajax.php'),
 		'action' => 'carmel_search_specialties',
 		'nonce' => wp_create_nonce('carmel_specialty_search_nonce'),
-		'emptyText' => 'Khong tim thay chuyen khoa phu hop.',
-		'errorText' => 'Da co loi xay ra. Vui long thu lai.',
+		'emptyText' => 'Không tìm thấy chuyên khoa phù hợp.',
+		'errorText' => 'Đã có lỗi xảy ra. Vui lòng thử lại.',
 	));
 }
 add_action('wp_enqueue_scripts', 'carmel_enqueue_specialty_search_assets', 20);
@@ -187,12 +187,12 @@ function add_css_admin_menu()
 {
 	if (is_user_logged_in()) {
 ?>
-		<style>
-			header {
-				top: 32px !important;
-			}
-		</style>
-	<?php
+<style>
+header {
+	top: 32px !important;
+}
+</style>
+<?php
 	}
 }
 add_action('wp_head', 'add_css_admin_menu');
@@ -261,16 +261,17 @@ function my_login_logo_url()
 add_filter('login_headerurl', 'my_login_logo_url');
 function my_login_logo()
 { ?>
-	<style type="text/css">
-		#login h1 a,
-		.login h1 a {
-			background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/img/logo-canh-cam.png);
-			height: 49px;
-			width: 267px;
-			background-size: 267px auto;
-			background-repeat: no-repeat;
-		}
-	</style>
+<style type="text/css">
+#login h1 a,
+.login h1 a {
+	background-image: url(<?php echo get_stylesheet_directory_uri();
+	?>/img/logo-canh-cam.png);
+	height: 49px;
+	width: 267px;
+	background-size: 267px auto;
+	background-repeat: no-repeat;
+}
+</style>
 <?php }
 add_action('login_enqueue_scripts', 'my_login_logo');
 function my_login_stylesheet()

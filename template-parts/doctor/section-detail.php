@@ -9,7 +9,38 @@ $doctor_intro_content = get_field('doctor_intro_content');
 $doctor_booking_link = get_field('doctor_booking_link');
 $doctor_content_tabs = get_field('doctor_content_tabs');
 $doctor_related_heading = get_field('doctor_related_heading');
-$doctor_related_posts = get_field('doctor_related_posts');
+$doctor_specialties = get_field('doctor_specialties');
+
+$doctor_specialty_ids = array();
+if (!empty($doctor_specialties)) {
+	foreach ($doctor_specialties as $specialty_item) {
+		$doctor_specialty_ids[] = is_object($specialty_item) ? (int) $specialty_item->ID : (int) $specialty_item;
+	}
+}
+$doctor_specialty_ids = array_values(array_unique(array_filter($doctor_specialty_ids)));
+
+$other_doctors_args = array(
+	'post_type' => 'bac-si',
+	'post_status' => 'publish',
+	'posts_per_page' => 6,
+	'post__not_in' => array($post_id),
+);
+
+if (!empty($doctor_specialty_ids)) {
+	$meta_query = array('relation' => 'OR');
+	foreach ($doctor_specialty_ids as $specialty_id) {
+		$meta_query[] = array(
+			'key' => 'doctor_specialties',
+			'value' => '"' . $specialty_id . '"',
+			'compare' => 'LIKE',
+		);
+	}
+	$other_doctors_args['meta_query'] = $meta_query;
+} else {
+	$other_doctors_args['post__in'] = array(0);
+}
+
+$other_doctors_query = new WP_Query($other_doctors_args);
 
 if (!$doctor_intro_heading) {
     $doctor_intro_heading = 'Giới thiệu';
@@ -169,25 +200,6 @@ if (!$doctor_related_heading) {
 					<div class="swiper-column-auto auto-4-column" data-id-swiper="other-doctors">
 						<div class="swiper">
 							<div class="swiper-wrapper">
-								<?php if (!empty($doctor_related_posts)) : ?>
-								<?php foreach ($doctor_related_posts as $doctor_item) :
-                                        $post = $doctor_item;
-                                        setup_postdata($post);
-                                    ?>
-								<div class="swiper-slide">
-									<?php get_template_part('template-parts/component/card', 'doctor'); ?>
-								</div>
-								<?php endforeach; ?>
-								<?php wp_reset_postdata(); ?>
-								<?php else : ?>
-								<?php
-                                    $other_doctors_query = new WP_Query(array(
-                                        'post_type' => 'bac-si',
-                                        'post_status' => 'publish',
-                                        'posts_per_page' => 6,
-                                        'post__not_in' => array($post_id),
-                                    ));
-                                    ?>
 								<?php if ($other_doctors_query->have_posts()) : ?>
 								<?php while ($other_doctors_query->have_posts()) : $other_doctors_query->the_post(); ?>
 								<div class="swiper-slide">
@@ -195,7 +207,10 @@ if (!$doctor_related_heading) {
 								</div>
 								<?php endwhile; ?>
 								<?php wp_reset_postdata(); ?>
-								<?php endif; ?>
+								<?php else : ?>
+								<div class="swiper-slide">
+									<p><?php esc_html_e('Chưa có thông tin bác sĩ', 'canhcamtheme'); ?></p>
+								</div>
 								<?php endif; ?>
 							</div>
 						</div>

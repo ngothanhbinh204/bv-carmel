@@ -1,14 +1,8 @@
 <?php
 $current_term = get_queried_object();
-$current_term_slug = 'all';
+$current_term_slug = '';
 $current_title = 'Danh sách các gói khám';
-$current_category_label = 'Tất cả';
-
-if ($current_term instanceof WP_Term && $current_term->taxonomy === 'danh-muc-dich-vu') {
-	$current_term_slug = $current_term->slug;
-	$current_title = $current_term->name;
-	$current_category_label = $current_term->name;
-}
+$current_category_label = '';
 
 $service_terms = get_terms(array(
 	'taxonomy' => 'danh-muc-dich-vu',
@@ -18,6 +12,18 @@ $service_terms = get_terms(array(
 	'order' => 'ASC',
 ));
 
+if (!is_wp_error($service_terms) && !empty($service_terms)) {
+	$current_term_slug = $service_terms[0]->slug;
+	$current_title = $service_terms[0]->name;
+	$current_category_label = $service_terms[0]->name;
+}
+
+if ($current_term instanceof WP_Term && $current_term->taxonomy === 'danh-muc-dich-vu') {
+	$current_term_slug = $current_term->slug;
+	$current_title = $current_term->name;
+	$current_category_label = $current_term->name;
+}
+
 $query_args = array(
 	'post_type' => 'dich-vu',
 	'post_status' => 'publish',
@@ -26,7 +32,7 @@ $query_args = array(
 	'order' => 'ASC',
 );
 
-if ($current_term_slug !== 'all') {
+if ($current_term_slug !== '') {
 	$query_args['tax_query'] = array(
 		array(
 			'taxonomy' => 'danh-muc-dich-vu',
@@ -39,7 +45,7 @@ if ($current_term_slug !== 'all') {
 $service_query = new WP_Query($query_args);
 
 $topic_terms = array();
-if ($current_term_slug !== 'all') {
+if ($current_term_slug !== '') {
 	$service_ids = get_posts(array(
 		'post_type' => 'dich-vu',
 		'post_status' => 'publish',
@@ -62,15 +68,6 @@ if ($current_term_slug !== 'all') {
 		));
 	}
 }
-
-if ($current_term_slug === 'all') {
-	$topic_terms = get_terms(array(
-		'taxonomy' => 'chu-de-dich-vu',
-		'hide_empty' => true,
-		'orderby' => 'name',
-		'order' => 'ASC',
-	));
-}
 ?>
 <section class="section-ServicesList" data-service-archive="wrapper"
 	data-service-category="<?php echo esc_attr($current_term_slug); ?>">
@@ -82,8 +79,6 @@ if ($current_term_slug === 'all') {
 
 			<div class="filter-bar">
 				<div class="filter-tags">
-					<a class="tag-btn <?php echo $current_term_slug === 'all' ? 'active' : ''; ?>"
-						href="<?php echo esc_url(get_post_type_archive_link('dich-vu')); ?>">Tất cả gói khám</a>
 					<?php if (!is_wp_error($service_terms) && !empty($service_terms)) : ?>
 					<?php foreach ($service_terms as $term) : ?>
 					<a class="tag-btn <?php echo $current_term_slug === $term->slug ? 'active' : ''; ?>"
@@ -97,12 +92,13 @@ if ($current_term_slug === 'all') {
 							'label' => 'Chủ đề',
 							'name' => 'service_topic',
 							'selected' => 'all',
-							'all_label' => 'Tất cả chủ đề',
+							'all_label' => esc_html__('Chủ đề nào bạn quan tâm', 'canhcamtheme'),
 							'terms' => $topic_terms,
-							'placeholder' => 'Chủ đề',
+							'placeholder' => esc_html__('Chủ đề nào bạn quan tâm', 'canhcamtheme'),
 						)) : ''; ?>
 					<?php endif; ?>
-					<button class="btn-search" type="button" data-service-search="button"><span>Tìm kiếm</span><span
+					<button class="btn-search" type="button"
+						data-service-search="button"><span><?php echo esc_html__('Tìm kiếm', 'canhcamtheme'); ?></span><span
 							class="material-symbols-outlined">search</span></button>
 				</div>
 			</div>

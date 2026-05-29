@@ -30,6 +30,21 @@
                 }
             ]
         },
+        {
+            "key": "field_doctor_specialties",
+            "label": "Chuyen khoa",
+            "name": "doctor_specialties",
+            "type": "relationship",
+            "instructions": "Chọn chuyên khoa của bác sĩ",
+            "post_type": [
+                "chuyen-khoa"
+            ],
+            "filters": [
+                "search",
+                "post_type"
+            ],
+            "return_format": "object"
+        },
        
         {
             "key": "field_doctor_booking_link",
@@ -104,20 +119,6 @@
             "label": "Tieu de bac si lien quan",
             "name": "doctor_related_heading",
             "type": "text"
-        },
-        {
-            "key": "field_doctor_related_posts",
-            "label": "Danh sach bac si lien quan",
-            "name": "doctor_related_posts",
-            "type": "relationship",
-            "post_type": [
-                "bac-si"
-            ],
-            "filters": [
-                "search",
-                "post_type"
-            ],
-            "return_format": "object"
         }
     ],
     "location": [

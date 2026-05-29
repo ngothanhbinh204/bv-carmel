@@ -311,44 +311,20 @@
             "type": "wysiwyg"
         },
         {
-            "key": "field_achievements_items",
-            "label": "Các thành tựu",
-            "name": "achievements_items",
-            "type": "repeater",
-            "sub_fields": [
-                {
-                    "key": "field_achievement_image",
-                    "label": "Hình ảnh",
-                    "name": "image",
-                    "type": "image",
-                    "return_format": "array"
-                },
-                {
-                    "key": "field_achievement_date",
-                    "label": "Ngày (VD: 12/03/2026)",
-                    "name": "date",
-                    "type": "text"
-                },
-                {
-                    "key": "field_achievement_title",
-                    "label": "Tiêu đề",
-                    "name": "title",
-                    "type": "text"
-                },
-                {
-                    "key": "field_achievement_desc",
-                    "label": "Mô tả ngắn",
-                    "name": "desc",
-                    "type": "textarea"
-                },
-                {
-                    "key": "field_achievement_link",
-                    "label": "Link",
-                    "name": "link",
-                    "type": "link",
-                    "return_format": "array"
-                }
-            ]
+            "key": "field_achievements_posts",
+            "label": "Chọn bài viết thành tựu",
+            "name": "achievements_posts",
+            "type": "relationship",
+            "instructions": "Chọn các bài viết để hiển thị trong section Achievements",
+            "post_type": [
+                "post"
+            ],
+            "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
+            ],
+            "return_format": "object"
         },
 
         {

@@ -15,7 +15,7 @@
         { "key": "field_intro_video_url", "label": "Video URL", "name": "intro_video_url", "type": "url" },
         { "key": "field_intro_sub_description", "label": "Mô tả phụ", "name": "intro_sub_description", "type": "wysiwyg" },
         { "key": "field_intro_button", "label": "Nút bấm", "name": "intro_button", "type": "link", "return_format": "array" },
-        { "key": "field_intro_stats", "label": "Thống kê", "name": "intro_stats", "type": "repeater", "sub_fields": [ { "key": "field_stat_icon", "label": "Icon", "name": "icon", "type": "image", "return_format": "array" }, { "key": "field_stat_number", "label": "Số lượng", "name": "number", "type": "number" }, { "key": "field_stat_title", "label": "Tiêu đề", "name": "title", "type": "text" } ] },
+        { "key": "field_intro_stats", "label": "Thống kê", "name": "intro_stats", "type": "repeater", "sub_fields": [ { "key": "field_stat_icon", "label": "Icon", "name": "icon", "type": "image", "return_format": "array" }, { "key": "field_stat_number", "label": "Số lượng", "name": "number", "type": "number" }, { "key": "field_stat_suffix", "label": "Hậu tố số (tùy chọn)", "name": "suffix", "type": "text" }, { "key": "field_stat_title", "label": "Tiêu đề", "name": "title", "type": "text" } ] },
 
         { "key": "field_tab_value", "label": "Value", "name": "", "type": "tab", "placement": "top" },
         { "key": "field_show_section_value", "label": "Hiển thị Value", "name": "show_section_value", "type": "true_false", "default_value": 1, "ui": 1 },
@@ -48,7 +48,21 @@
 
         { "key": "field_tab_device", "label": "Device", "name": "", "type": "tab", "placement": "top" },
         { "key": "field_show_section_device", "label": "Hiển thị Device", "name": "show_section_device", "type": "true_false", "default_value": 1, "ui": 1 },
-        { "key": "field_device_slides", "label": "Slides Thiết bị", "name": "device_slides", "type": "repeater", "layout": "block", "button_label": "Thêm slide", "sub_fields": [ { "key": "field_device_image", "label": "Hình ảnh", "name": "image", "type": "image", "return_format": "array" }, { "key": "field_device_title", "label": "Tiêu đề Slide", "name": "title", "type": "text" }, { "key": "field_device_slide_tabs", "label": "Tabs Nội Dung", "name": "slide_tabs", "type": "repeater", "layout": "table", "button_label": "Thêm tab", "sub_fields": [ { "key": "field_device_tab_label", "label": "Tên tab", "name": "tab_label", "type": "text" }, { "key": "field_device_tab_content", "label": "Nội dung tab", "name": "tab_content", "type": "wysiwyg" } ] } ] },
+        { "key": "field_device_title", "label": "Tiêu đề Device", "name": "device_title", "type": "text" },
+        {
+            "key": "field_device_slides",
+            "label": "Tabs Device",
+            "name": "device_slides",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Thêm tab",
+            "sub_fields": [
+                { "key": "field_device_tab_target", "label": "Mã tab (VD: facility)", "name": "tab_target", "type": "text" },
+                { "key": "field_device_tab_label", "label": "Tên tab", "name": "tab_label", "type": "text" },
+                { "key": "field_device_tab_gallery", "label": "Thư viện ảnh", "name": "tab_gallery", "type": "gallery", "return_format": "array", "preview_size": "medium", "insert": "append", "library": "all" },
+                { "key": "field_device_tab_content", "label": "Nội dung", "name": "tab_content", "type": "wysiwyg", "tabs": "all" }
+            ]
+        },
 
         { "key": "field_tab_service", "label": "Service", "name": "", "type": "tab", "placement": "top" },
         { "key": "field_show_section_service", "label": "Hiển thị Service", "name": "show_section_service", "type": "true_false", "default_value": 1, "ui": 1 },

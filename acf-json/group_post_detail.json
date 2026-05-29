@@ -1,0 +1,117 @@
+{
+    "key": "group_post_detail",
+    "title": "Chi tiet Bai viet",
+    "fields": [
+        {
+            "key": "field_post_tab_doctor",
+            "label": "Bac si tham van",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_post_doctor_consult",
+            "label": "Bác sĩ tham vấn y khoa",
+            "name": "post_doctor_consult",
+            "type": "post_object",
+            "instructions": "Chọn bác sĩ tham vấn y khoa cho bài viết này",
+            "post_type": ["bac-si"],
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_post_tab_faq",
+            "label": "Cau hoi thuong gap",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_post_faq_items",
+            "label": "Danh sach cau hoi thuong gap",
+            "name": "post_faq_items",
+            "type": "repeater",
+            "button_label": "Thêm câu hỏi",
+            "sub_fields": [
+                {
+                    "key": "field_post_faq_question",
+                    "label": "Câu hỏi",
+                    "name": "question",
+                    "type": "text"
+                },
+                {
+                    "key": "field_post_faq_answer",
+                    "label": "Trả lời",
+                    "name": "answer",
+                    "type": "wysiwyg"
+                }
+            ]
+        },
+        {
+            "key": "field_post_tab_references",
+            "label": "Nguon tham khao",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_post_references",
+            "label": "Danh sach nguon tham khao",
+            "name": "post_references",
+            "type": "repeater",
+            "button_label": "Thêm nguồn tham khảo",
+            "sub_fields": [
+                {
+                    "key": "field_post_ref_label",
+                    "label": "Nhãn (VD: 1.)",
+                    "name": "ref_label",
+                    "type": "text"
+                },
+                {
+                    "key": "field_post_ref_url",
+                    "label": "Đường dẫn",
+                    "name": "ref_url",
+                    "type": "url"
+                },
+                {
+                    "key": "field_post_ref_desc",
+                    "label": "Mô tả nguồn",
+                    "name": "ref_desc",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "key": "field_post_tab_related",
+            "label": "Bai viet lien quan",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_post_related_heading",
+            "label": "Tiêu đề bài viết cùng chủ đề",
+            "name": "post_related_heading",
+            "type": "text"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": ""
+}

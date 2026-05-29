@@ -170,8 +170,22 @@ function carmel_get_specialty_options_with_doctors()
 
 	$options = array();
 	foreach ($specialty_posts as $specialty_post) {
-		$doctor_rel = get_field('specialty_doctors', $specialty_post->ID);
-		if (empty($doctor_rel)) {
+		$has_doctors_query = new WP_Query(array(
+			'post_type' => 'bac-si',
+			'post_status' => 'publish',
+			'posts_per_page' => 1,
+			'fields' => 'ids',
+			'no_found_rows' => true,
+			'meta_query' => array(
+				array(
+					'key' => 'doctor_specialties',
+					'value' => '"' . $specialty_post->ID . '"',
+					'compare' => 'LIKE',
+				),
+			),
+		));
+
+		if (!$has_doctors_query->have_posts()) {
 			continue;
 		}
 
@@ -195,18 +209,25 @@ function carmel_get_doctor_ids_by_specialty_slug($specialty_slug)
 		return array();
 	}
 
-	$doctor_rel = get_field('specialty_doctors', $specialty_post->ID);
-	if (empty($doctor_rel)) {
+	$doctors_query = new WP_Query(array(
+		'post_type' => 'bac-si',
+		'post_status' => 'publish',
+		'posts_per_page' => -1,
+		'fields' => 'ids',
+		'meta_query' => array(
+			array(
+				'key' => 'doctor_specialties',
+				'value' => '"' . $specialty_post->ID . '"',
+				'compare' => 'LIKE',
+			),
+		),
+	));
+
+	if (!$doctors_query->have_posts()) {
 		return array();
 	}
 
-	$doctor_ids = array();
-	foreach ($doctor_rel as $doctor_item) {
-		$doctor_ids[] = is_object($doctor_item) ? (int) $doctor_item->ID : (int) $doctor_item;
-	}
-
-	$doctor_ids = array_values(array_unique(array_filter($doctor_ids)));
-	return $doctor_ids;
+	return array_values(array_unique(array_filter(array_map('intval', $doctors_query->posts))));
 }
 
 function carmel_get_doctor_specialty_names($doctor_id)
@@ -216,32 +237,164 @@ function carmel_get_doctor_specialty_names($doctor_id)
 		return array();
 	}
 
-	$specialty_query = new WP_Query(array(
-		'post_type' => 'chuyen-khoa',
+	$doctor_specialties = get_field('doctor_specialties', $doctor_id);
+	if (empty($doctor_specialties)) {
+		return array();
+	}
+
+	$names = array();
+	foreach ($doctor_specialties as $specialty_item) {
+		$specialty_id = is_object($specialty_item) ? (int) $specialty_item->ID : (int) $specialty_item;
+		if (!$specialty_id) {
+			continue;
+		}
+
+		$specialty_title = get_the_title($specialty_id);
+		if ($specialty_title) {
+			$names[] = $specialty_title;
+		}
+	}
+
+	return array_values(array_unique(array_filter($names)));
+}
+
+function carmel_get_doctor_specialty_links($doctor_id)
+{
+	$doctor_id = (int) $doctor_id;
+	if (!$doctor_id) {
+		return array();
+	}
+
+	$doctor_specialties = get_field('doctor_specialties', $doctor_id);
+	if (empty($doctor_specialties)) {
+		return array();
+	}
+
+	$links = array();
+	foreach ($doctor_specialties as $specialty_item) {
+		$specialty_id = is_object($specialty_item) ? (int) $specialty_item->ID : (int) $specialty_item;
+		if (!$specialty_id) {
+			continue;
+		}
+
+		$specialty_title = get_the_title($specialty_id);
+		$specialty_link = get_edit_post_link($specialty_id);
+		if (!$specialty_title || !$specialty_link) {
+			continue;
+		}
+
+		$links[$specialty_id] = sprintf(
+			'<a href="%s">%s</a>',
+			esc_url($specialty_link),
+			esc_html($specialty_title)
+		);
+	}
+
+	return array_values($links);
+}
+
+function carmel_get_specialty_doctor_links($specialty_id)
+{
+	$specialty_id = (int) $specialty_id;
+	if (!$specialty_id) {
+		return array();
+	}
+
+	$doctor_posts = get_posts(array(
+		'post_type' => 'bac-si',
 		'post_status' => 'publish',
 		'posts_per_page' => -1,
-		'fields' => 'ids',
+		'orderby' => 'title',
+		'order' => 'ASC',
 		'meta_query' => array(
 			array(
-				'key' => 'specialty_doctors',
-				'value' => '"' . $doctor_id . '"',
+				'key' => 'doctor_specialties',
+				'value' => '"' . $specialty_id . '"',
 				'compare' => 'LIKE',
 			),
 		),
 	));
 
-	if (!$specialty_query->have_posts()) {
+	if (empty($doctor_posts)) {
 		return array();
 	}
 
-	$names = array();
-	foreach ($specialty_query->posts as $specialty_id) {
-		$names[] = get_the_title($specialty_id);
+	$links = array();
+	foreach ($doctor_posts as $doctor_post) {
+		$doctor_link = get_edit_post_link($doctor_post->ID);
+		if (!$doctor_link) {
+			continue;
+		}
+
+		$links[$doctor_post->ID] = sprintf(
+			'<a href="%s">%s</a>',
+			esc_url($doctor_link),
+			esc_html($doctor_post->post_title)
+		);
 	}
 
-	wp_reset_postdata();
-	return array_values(array_filter($names));
+	return array_values($links);
 }
+
+function carmel_add_doctor_admin_columns($columns)
+{
+	$updated_columns = array();
+	foreach ($columns as $key => $label) {
+		$updated_columns[$key] = $label;
+		if ($key === 'title') {
+			$updated_columns['doctor_specialties'] = 'Chuyên khoa';
+		}
+	}
+
+	return $updated_columns;
+}
+add_filter('manage_bac-si_posts_columns', 'carmel_add_doctor_admin_columns');
+
+function carmel_render_doctor_admin_columns($column, $post_id)
+{
+	if ($column !== 'doctor_specialties') {
+		return;
+	}
+
+	$specialty_links = carmel_get_doctor_specialty_links($post_id);
+	if (empty($specialty_links)) {
+		echo '&mdash;';
+		return;
+	}
+
+	echo wp_kses_post(implode('<br>', $specialty_links));
+}
+add_action('manage_bac-si_posts_custom_column', 'carmel_render_doctor_admin_columns', 10, 2);
+
+function carmel_add_specialty_admin_columns($columns)
+{
+	$updated_columns = array();
+	foreach ($columns as $key => $label) {
+		$updated_columns[$key] = $label;
+		if ($key === 'title') {
+			$updated_columns['specialty_doctors'] = 'Bác sĩ';
+		}
+	}
+
+	return $updated_columns;
+}
+add_filter('manage_chuyen-khoa_posts_columns', 'carmel_add_specialty_admin_columns');
+
+function carmel_render_specialty_admin_columns($column, $post_id)
+{
+	if ($column !== 'specialty_doctors') {
+		return;
+	}
+
+	$doctor_links = carmel_get_specialty_doctor_links($post_id);
+	if (empty($doctor_links)) {
+		echo '&mdash;';
+		return;
+	}
+
+	echo wp_kses_post(implode('<br>', $doctor_links));
+}
+add_action('manage_chuyen-khoa_posts_custom_column', 'carmel_render_specialty_admin_columns', 10, 2);
 
 function carmel_render_doctor_pagination($current_page, $total_pages)
 {
@@ -324,7 +477,7 @@ function carmel_ajax_search_specialties()
 		}
 		wp_reset_postdata();
 	} else {
-		echo '<p>' . esc_html__('Khong tim thay chuyen khoa phu hop.', 'canhcamtheme') . '</p>';
+		echo '<p>' . esc_html__('Không tìm thấy chuyên khoa phù hợp.', 'canhcamtheme') . '</p>';
 	}
 
 	wp_die();

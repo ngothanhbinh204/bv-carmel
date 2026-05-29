@@ -84,8 +84,15 @@
 							?>
 						</div>
 						<div class="header-button">
-							<div class="header-lang">
+							<!-- <div class="header-lang">
 								<?php if (function_exists('wpml_add_language_selector')) do_action('wpml_add_language_selector'); ?>
+							</div> -->
+							<div class="header-lang">
+								<ul>
+									<li class="wpml-ls-item wpml-ls-current-language"><a><span
+												class="wpml-ls-native">VN</span></a></li>
+									<li class="wpml-ls-item"><a><span class="wpml-ls-native">VN</span></a></li>
+								</ul>
 							</div>
 							<div class="header-search">
 								<p>Tìm kiếm</p>
