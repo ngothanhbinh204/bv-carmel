@@ -1,0 +1,89 @@
+{
+    "key": "group_template_policy",
+    "title": "Template Policy",
+    "fields": [
+        {
+            "key": "field_policy_tab_content",
+            "label": "Noi dung",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_policy_main_title",
+            "label": "Tieu de chinh",
+            "name": "policy_main_title",
+            "type": "text"
+        },
+		{
+			"key": "field_policy_main_content",
+			"label": "Noi dung chinh",
+			"name": "policy_main_content",
+			"type": "wysiwyg",
+			"tabs": "all",
+			"toolbar": "full",
+			"media_upload": 1
+		},
+        {
+            "key": "field_policy_sidebar_title",
+            "label": "Tieu de sidebar",
+            "name": "policy_sidebar_title",
+            "type": "text"
+        },
+        {
+            "key": "field_policy_sections",
+            "label": "Danh sach dieu muc",
+            "name": "policy_sections",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Them dieu muc",
+            "sub_fields": [
+                {
+                    "key": "field_policy_section_clause",
+                    "label": "Nhan dieu (VD: Dieu 1:)",
+                    "name": "section_clause",
+                    "type": "text"
+                },
+                {
+                    "key": "field_policy_section_title",
+                    "label": "Tieu de muc",
+                    "name": "section_title",
+                    "type": "text"
+                },
+                {
+                    "key": "field_policy_section_anchor",
+                    "label": "Anchor ID (tuy chon)",
+                    "name": "section_anchor",
+                    "type": "text",
+                    "instructions": "Vi du: tong-quan"
+                },
+                {
+                    "key": "field_policy_section_content",
+                    "label": "Noi dung",
+                    "name": "section_content",
+                    "type": "wysiwyg",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates/template-policy.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": ""
+}

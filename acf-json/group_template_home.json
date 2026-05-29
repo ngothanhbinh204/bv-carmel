@@ -27,6 +27,18 @@
         { "key": "field_show_section_doctor", "label": "Hiển thị Doctor", "name": "show_section_doctor", "type": "true_false", "default_value": 1, "ui": 1 },
         { "key": "field_doctor_title", "label": "Tiêu đề", "name": "doctor_title", "type": "text" },
         { "key": "field_doctor_description", "label": "Mô tả", "name": "doctor_description", "type": "wysiwyg" },
+        {
+			"key": "field_list_doctor",
+			"label": "Danh sách Bác sĩ",
+			"name": "list_doctor",
+			"type": "relationship",
+			"post_type": ["bac-si"],
+			"return_format": "object",
+			"filters": ["search", "post_type"],
+			"elements": ["featured_image", "post_title"],
+			"min": 0,
+			"max": ""
+		},
         { "key": "field_doctor_button", "label": "Nút Xem tất cả", "name": "doctor_button", "type": "link", "return_format": "array" },
 
         { "key": "field_tab_outstanding", "label": "Outstanding", "name": "", "type": "tab", "placement": "top" },
@@ -36,13 +48,13 @@
 
         { "key": "field_tab_device", "label": "Device", "name": "", "type": "tab", "placement": "top" },
         { "key": "field_show_section_device", "label": "Hiển thị Device", "name": "show_section_device", "type": "true_false", "default_value": 1, "ui": 1 },
-        { "key": "field_device_slides", "label": "Slides Thiết bị", "name": "device_slides", "type": "repeater", "sub_fields": [ { "key": "field_device_image", "label": "Hình ảnh", "name": "image", "type": "image", "return_format": "array" }, { "key": "field_device_title", "label": "Tiêu đề Slide", "name": "title", "type": "text" }, { "key": "field_device_content", "label": "Nội dung", "name": "content", "type": "wysiwyg" } ] },
+        { "key": "field_device_slides", "label": "Slides Thiết bị", "name": "device_slides", "type": "repeater", "layout": "block", "button_label": "Thêm slide", "sub_fields": [ { "key": "field_device_image", "label": "Hình ảnh", "name": "image", "type": "image", "return_format": "array" }, { "key": "field_device_title", "label": "Tiêu đề Slide", "name": "title", "type": "text" }, { "key": "field_device_slide_tabs", "label": "Tabs Nội Dung", "name": "slide_tabs", "type": "repeater", "layout": "table", "button_label": "Thêm tab", "sub_fields": [ { "key": "field_device_tab_label", "label": "Tên tab", "name": "tab_label", "type": "text" }, { "key": "field_device_tab_content", "label": "Nội dung tab", "name": "tab_content", "type": "wysiwyg" } ] } ] },
 
         { "key": "field_tab_service", "label": "Service", "name": "", "type": "tab", "placement": "top" },
         { "key": "field_show_section_service", "label": "Hiển thị Service", "name": "show_section_service", "type": "true_false", "default_value": 1, "ui": 1 },
         { "key": "field_service_title", "label": "Tiêu đề", "name": "service_title", "type": "text" },
         { "key": "field_service_description", "label": "Mô tả", "name": "service_description", "type": "wysiwyg" },
-        { "key": "field_home_services", "label": "Chọn Dịch vụ hiển thị", "name": "home_services", "type": "relationship", "post_type": ["dich-vu"], "return_format": "object" },
+        { "key": "field_home_services", "label": "Danh sách Dịch vụ", "name": "home_services", "type": "repeater", "layout": "table", "button_label": "Thêm dịch vụ", "sub_fields": [ { "key": "field_home_service_image", "label": "Hình ảnh", "name": "image", "type": "image", "return_format": "array" }, { "key": "field_home_service_title", "label": "Tiêu đề", "name": "title", "type": "text" }, { "key": "field_home_service_description", "label": "Mô tả", "name": "description", "type": "wysiwyg", "tabs": "all" }, { "key": "field_home_service_link", "label": "Link chi tiết", "name": "link", "type": "link", "return_format": "array" } ] },
         { "key": "field_service_button", "label": "Nút Xem tất cả", "name": "service_button", "type": "link", "return_format": "array" },
 
         { "key": "field_tab_procedure", "label": "Procedure", "name": "", "type": "tab", "placement": "top" },

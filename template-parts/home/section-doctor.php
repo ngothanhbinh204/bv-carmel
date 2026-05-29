@@ -2,7 +2,7 @@
 	$title = get_field('doctor_title');
 	$desc = get_field('doctor_description');
 	$btn = get_field('doctor_button');
-	$list_doctor = get_field('list_doctor');
+	$list_doctor = get_field('list_doctor'); // Relationship field - trả về mảng các post object
 ?>
 <section class="section-doctor">
 	<div class="section-py">
@@ -23,16 +23,14 @@
 					<div class="swiper">
 						<div class="swiper-wrapper">
 							<?php if ($list_doctor): ?>
-							<?php foreach ($list_doctor as $doctor): ?>
+							<?php foreach ($list_doctor as $post): 
+									setup_postdata($post);
+								?>
 							<div class="swiper-slide">
-								<?php
-										$post = $doctor['doctor'];
-										setup_postdata($post);
-										get_template_part('template-parts/component/card', 'doctor');
-										wp_reset_postdata();
-										?>
+								<?php get_template_part('template-parts/component/card', 'doctor'); ?>
 							</div>
 							<?php endforeach; ?>
+							<?php wp_reset_postdata(); ?>
 							<?php endif; ?>
 						</div>
 					</div>
